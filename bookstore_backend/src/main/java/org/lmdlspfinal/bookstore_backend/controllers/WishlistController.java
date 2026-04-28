@@ -21,7 +21,7 @@ public class WishlistController {
         return ResponseEntity.ok(wishlistService.createWishlist(wishlist));
     }
 
-    @GetMapping("/users/{userid}")
+    @GetMapping("/user/{userid}")
     public ResponseEntity<List<Wishlist>> getWishlistsByUser(@PathVariable Long userid){
         return ResponseEntity.ok(wishlistService.getWishlistsByUser(userid));
     }

@@ -33,13 +33,17 @@ public class HomeController implements Initializable {
     private void loadCurrentWishlist() {
         try {
             String wishlistResponse = ApiService.get("/api/wishlists/user/" + BookstoreApplication.loggedInUserId);
+            System.out.println("Wishlist response on login: " + wishlistResponse);
             JsonNode wishlistNode = mapper.readTree(wishlistResponse);
             if (wishlistNode.isArray() && wishlistNode.size() > 0) {
                 currentWishlistId = wishlistNode.get(0).get("wishlistid").asLong();
+                System.out.println("Found wishlist: " + currentWishlistId);
+                BookstoreApplication.currentWishlistId = currentWishlistId;
+            } else {
+                System.out.println("No wishlist found for user: " + BookstoreApplication.loggedInUserId);
             }
-            BookstoreApplication.currentWishlistId = currentWishlistId;
         } catch (Exception e) {
-            System.out.println("No wishlist found yet: " + e.getMessage());
+            System.out.println("Error loading wishlist: " + e.getMessage());
         }
     }
 
