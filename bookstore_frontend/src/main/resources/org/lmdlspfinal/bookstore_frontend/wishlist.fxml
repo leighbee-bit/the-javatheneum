@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.WishlistController"
+            style="-fx-background-color: #f5f0ff;">
+
+    <!-- TOP NAV -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15"
+              style="-fx-background-color: #6a0dad; -fx-padding: 15;">
+            <Text text="❤ My Wishlist" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-fill: white;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="← Back to Books" onAction="#handleBack"
+                    style="-fx-background-color: white; -fx-text-fill: #6a0dad;"/>
+        </HBox>
+    </top>
+
+    <!-- WISHLIST ITEMS -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #f5f0ff;">
+            <VBox spacing="10" style="-fx-padding: 20;">
+                <Label fx:id="statusLabel" style="-fx-font-size: 14; -fx-text-fill: #6a0dad;"/>
+                <VBox fx:id="wishlistContainer" spacing="10"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.LoginController"
+      alignment="CENTER" spacing="15"
+      style="-fx-background-color: #f5f0ff; -fx-padding: 40;">
+
+    <Text text="📚 Welcome to the Javatheneum" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+
+    <Label text="Username"/>
+    <TextField fx:id="usernameField" promptText="Enter username" maxWidth="300"/>
+
+    <Label text="Password"/>
+    <PasswordField fx:id="passwordField" promptText="Enter password" maxWidth="300"/>
+
+    <Label fx:id="errorLabel" style="-fx-text-fill: red;"/>
+
+    <Button text="Login" onAction="#handleLogin"
+            style="-fx-background-color: #6a0dad; -fx-text-fill: white; -fx-padding: 10 30;"/>
+
+    <Button text="Don't have an account? Register" onAction="#handleRegister"
+            style="-fx-background-color: transparent; -fx-text-fill: #6a0dad;"/>
+</VBox>
