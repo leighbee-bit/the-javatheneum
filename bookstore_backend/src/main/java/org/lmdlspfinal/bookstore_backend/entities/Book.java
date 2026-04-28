@@ -28,4 +28,16 @@ public class Book {
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "page_count")
+    private Integer pageCount;
+
+    @Column(name = "preview_link", length = 500)
+    private String previewLink;
+
+    @Column
+    private String genre;
+
+    @Column(columnDefinition = "integer default 0")
+    private Integer wishlistCount = 0;
 }

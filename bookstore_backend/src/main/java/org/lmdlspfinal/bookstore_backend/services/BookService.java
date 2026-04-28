@@ -41,4 +41,12 @@ public class BookService {
     public void deleteBookById(Long id) {
         bookRepository.deleteById(id);
     }
+
+    public List<Book> getBooksByGenre(String genre) {
+        return bookRepository.findByGenreContainingIgnoreCase(genre);
+    }
+
+    public List<Book> getPopularBooks() {
+        return bookRepository.findTop10ByOrderByWishlistCountDesc();
+    }
 }

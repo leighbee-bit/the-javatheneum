@@ -2,33 +2,56 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.HomeController"
-            style="-fx-background-color: #f5f0ff;">
+            style="-fx-background-color: #b0c4e8;">
 
-    <!-- TOP NAV -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="15"
-              style="-fx-background-color: #6a0dad; -fx-padding: 15;">
-            <Text text="📚 Javatheneum" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-fill: white;"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <TextField fx:id="searchField" promptText="Search books..." prefWidth="200"/>
-            <Button text="Search" onAction="#handleSearch"
-                    style="-fx-background-color: white; -fx-text-fill: #6a0dad;"/>
-            <Button text="❤ Wishlist" onAction="#handleWishlist"
-                    style="-fx-background-color: white; -fx-text-fill: #6a0dad;"/>
-            <Button text="Logout" onAction="#handleLogout"
-                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
-        </HBox>
+        <VBox style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2;">
+
+            <!-- Title bar -->
+            <HBox alignment="CENTER_LEFT" spacing="5"
+                  style="-fx-background-color: linear-gradient(to right, #000080, #1084d0); -fx-padding: 3 5;">
+                <ImageView fitWidth="20" fitHeight="20" preserveRatio="true">
+                    <image>
+                        <Image url="@javathenum_logo.png"/>
+                    </image>
+                </ImageView>
+                <Text text="Javatheneum - Book Store" style="-fx-fill: white; -fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="—" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+                <Button text="□" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+                <Button text="✕" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+            </HBox>
+
+            <!-- Menu bar -->
+            <HBox alignment="CENTER_LEFT" spacing="10"
+                  style="-fx-background-color: #d4d0c8; -fx-padding: 5 10;">
+                <TextField fx:id="searchField" promptText="Search books..." prefWidth="200"
+                           style="-fx-background-color: white; -fx-border-color: #808080 #ffffff #ffffff #808080; -fx-border-width: 1;"/>
+                <Button text="Search" onAction="#handleSearch"
+                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🏠 Home" onAction="#handleHome"
+                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+                <Button text="❤ Wishlist" onAction="#handleWishlist"
+                        style="-fx-background-color: #f4a0c0; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+                <Button text="Logout" onAction="#handleLogout"
+                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+            </HBox>
+
+            <Label fx:id="statusLabel" style="-fx-font-size: 11; -fx-padding: 2 10; -fx-text-fill: #000080;"/>
+        </VBox>
     </top>
 
-    <!-- BOOK GRID -->
+    <!-- MAIN CONTENT -->
     <center>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #f5f0ff;">
-            <VBox spacing="10" style="-fx-padding: 20;">
-                <Label fx:id="statusLabel" style="-fx-font-size: 14; -fx-text-fill: #6a0dad;"/>
-                <FlowPane fx:id="bookGrid" hgap="15" vgap="15"/>
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background-color: #b0c4e8; -fx-border-color: transparent;">
+            <VBox fx:id="mainContainer" spacing="20" style="-fx-padding: 20; -fx-background-color: #b0c4e8;">
             </VBox>
         </ScrollPane>
     </center>

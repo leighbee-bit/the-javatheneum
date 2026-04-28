@@ -2,29 +2,102 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.RegisterController"
-      alignment="CENTER" spacing="15"
-      style="-fx-background-color: #f5f0ff; -fx-padding: 40;">
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.RegisterController"
+           style="-fx-background-color: #b0c4e8;">
 
-    <Text text="📚 Create an Account" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
+    <!-- Register window -->
+    <VBox alignment="CENTER">
+        <VBox maxWidth="380"
+              style="-fx-background-color: #d4d0c8;
+                     -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                     -fx-border-width: 3;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 3, 3);">
 
-    <Label text="Username"/>
-    <TextField fx:id="usernameField" promptText="Enter username" maxWidth="300"/>
+            <!-- Title bar -->
+            <HBox alignment="CENTER_LEFT" spacing="6"
+                  style="-fx-background-color: linear-gradient(to right, #000080, #1084d0);
+                         -fx-padding: 4 6;">
+                <ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
+                    <image><Image url="@javathenum_logo.png"/></image>
+                </ImageView>
+                <Text text="Register - Javatheneum" style="-fx-fill: white; -fx-font-size: 11; -fx-font-weight: bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="—" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+                <Button text="□" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+                <Button text="✕" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+            </HBox>
 
-    <Label text="Email"/>
-    <TextField fx:id="emailField" promptText="Enter email" maxWidth="300"/>
+            <!-- Content -->
+            <VBox alignment="CENTER" spacing="12" style="-fx-padding: 25;">
 
-    <Label text="Password"/>
-    <PasswordField fx:id="passwordField" promptText="Enter password" maxWidth="300"/>
+                <ImageView fitWidth="60" fitHeight="60" preserveRatio="true">
+                    <image><Image url="@javathenum_logo.png"/></image>
+                </ImageView>
 
-    <Label fx:id="errorLabel" style="-fx-text-fill: red;"/>
-    <Label fx:id="successLabel" style="-fx-text-fill: green;"/>
+                <Text text="Create an Account"
+                      style="-fx-font-size: 16; -fx-font-weight: bold; -fx-fill: #000080;"/>
 
-    <Button text="Register" onAction="#handleRegister"
-            style="-fx-background-color: #6a0dad; -fx-text-fill: white; -fx-padding: 10 30;"/>
+                <VBox spacing="3">
+                    <Label text="Username:"
+                           style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #000000;"/>
+                    <TextField fx:id="usernameField" promptText="Enter username" prefWidth="300"
+                               style="-fx-background-color: white;
+                                      -fx-border-color: #808080 #ffffff #ffffff #808080;
+                                      -fx-border-width: 2; -fx-font-size: 12;"/>
+                </VBox>
 
-    <Button text="Already have an account? Login" onAction="#handleLogin"
-            style="-fx-background-color: transparent; -fx-text-fill: #6a0dad;"/>
-</VBox>
+                <VBox spacing="3">
+                    <Label text="Email:"
+                           style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #000000;"/>
+                    <TextField fx:id="emailField" promptText="Enter email" prefWidth="300"
+                               style="-fx-background-color: white;
+                                      -fx-border-color: #808080 #ffffff #ffffff #808080;
+                                      -fx-border-width: 2; -fx-font-size: 12;"/>
+                </VBox>
+
+                <VBox spacing="3">
+                    <Label text="Password:"
+                           style="-fx-font-size: 11; -fx-font-weight: bold; -fx-text-fill: #000000;"/>
+                    <PasswordField fx:id="passwordField" promptText="Enter password" prefWidth="300"
+                                   style="-fx-background-color: white;
+                                          -fx-border-color: #808080 #ffffff #ffffff #808080;
+                                          -fx-border-width: 2; -fx-font-size: 12;"/>
+                </VBox>
+
+                <Label fx:id="errorLabel" style="-fx-text-fill: #cc0000; -fx-font-size: 11;"/>
+                <Label fx:id="successLabel" style="-fx-text-fill: #006600; -fx-font-size: 11;"/>
+
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="Register" onAction="#handleRegister" prefWidth="100"
+                            style="-fx-background-color: #d4d0c8;
+                                   -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                                   -fx-border-width: 2; -fx-font-size: 12; -fx-padding: 5 10;"/>
+                    <Button text="← Login" onAction="#handleLogin" prefWidth="100"
+                            style="-fx-background-color: #f4a0c0;
+                                   -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                                   -fx-border-width: 2; -fx-font-size: 12; -fx-padding: 5 10;"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </VBox>
+
+    <!-- Taskbar -->
+    <HBox alignment="CENTER_LEFT" spacing="5"
+          style="-fx-background-color: #d4d0c8;
+                 -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                 -fx-border-width: 2 0 0 0; -fx-padding: 3 5;"
+          StackPane.alignment="BOTTOM_LEFT"
+          maxHeight="30">
+        <Button text="🪟 Start"
+                style="-fx-background-color: #d4d0c8;
+                       -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                       -fx-border-width: 2; -fx-font-size: 11; -fx-font-weight: bold; -fx-padding: 2 8;"/>
+        <Separator orientation="VERTICAL"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="clockLabel" style="-fx-font-size: 10;"/>
+    </HBox>
+
+</StackPane>

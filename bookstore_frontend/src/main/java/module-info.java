@@ -3,6 +3,8 @@ module org.lmdlspfinal.bookstore_frontend {
     requires javafx.fxml;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires java.desktop;
+    requires javafx.web;
 
     opens org.lmdlspfinal.bookstore_frontend to javafx.fxml;
     opens org.lmdlspfinal.bookstore_frontend.controllers to javafx.fxml;

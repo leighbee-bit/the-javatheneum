@@ -54,4 +54,14 @@ public class BookController {
         bookService.deleteBookById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<Book>> getBooksByGenre(@PathVariable String genre) {
+        return ResponseEntity.ok(bookService.getBooksByGenre(genre));
+    }
+
+    @GetMapping("/popular")
+    public ResponseEntity<List<Book>> getPopularBooks() {
+        return ResponseEntity.ok(bookService.getPopularBooks());
+    }
 }

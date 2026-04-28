@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 
 public class ApiService {
 
-    private static final String BASE_URL = "http://172.16.13.253:8080";
+    private static final String BASE_URL = "http://localhost:8080";
     private static final HttpClient client = HttpClient.newHttpClient();
     private static final ObjectMapper mapper = new ObjectMapper();
 

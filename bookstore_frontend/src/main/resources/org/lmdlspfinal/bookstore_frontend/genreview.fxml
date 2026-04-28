@@ -6,7 +6,7 @@
 <?import javafx.scene.image.Image?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.WishlistController"
+            fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.GenreController"
             style="-fx-background-color: #b0c4e8;"
             prefWidth="1000" prefHeight="700">
 
@@ -20,7 +20,7 @@
                 <ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
                     <image><Image url="@javathenum_logo.png"/></image>
                 </ImageView>
-                <Text text="My Wishlist - Javatheneum"
+                <Text fx:id="titleText" text="Genre - Javatheneum"
                       style="-fx-fill: white; -fx-font-size: 11; -fx-font-weight: bold;"/>
                 <Region HBox.hgrow="ALWAYS"/>
                 <Button text="—" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
@@ -33,10 +33,12 @@
                   style="-fx-background-color: #d4d0c8;
                          -fx-border-color: #ffffff #808080 #808080 #ffffff;
                          -fx-border-width: 0 0 2 0; -fx-padding: 5 10;">
-                <Button text="🏠 Home" onAction="#handleHome"
-                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
                 <Button text="← Back" onAction="#handleBack"
                         style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+                <Button text="🏠 Home" onAction="#handleHome"
+                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+                <Button text="❤ Wishlist" onAction="#handleWishlist"
+                        style="-fx-background-color: #f4a0c0; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
                 <Region HBox.hgrow="ALWAYS"/>
                 <Label fx:id="statusLabel" style="-fx-font-size: 11; -fx-text-fill: #000080;"/>
             </HBox>
@@ -47,8 +49,9 @@
     <center>
         <ScrollPane fitToWidth="true" fitToHeight="true"
                     style="-fx-background-color: #b0c4e8; -fx-border-color: transparent;">
-            <VBox fx:id="wishlistContainer" spacing="10"
-                  style="-fx-padding: 20; -fx-background-color: #b0c4e8;"/>
+            <FlowPane fx:id="bookGrid" hgap="15" vgap="15"
+                      prefWrapLength="960"
+                      style="-fx-padding: 20; -fx-background-color: #b0c4e8;"/>
         </ScrollPane>
     </center>
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.LoadingController"
+           style="-fx-background-color: #b0c4e8;">
+
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 40;">
+
+        <ImageView fitWidth="100" fitHeight="100" preserveRatio="true">
+            <image>
+                <Image url="@javathenum_logo.png"/>
+            </image>
+        </ImageView>
+
+        <Text text="Javatheneum" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-fill: #000080;"/>
+        <Text text="Your Online Book Store" style="-fx-font-size: 14; -fx-fill: #000080;"/>
+
+        <VBox alignment="CENTER" spacing="8"
+              style="-fx-background-color: #d4d0c8;
+                     -fx-border-color: #808080 #ffffff #ffffff #808080;
+                     -fx-border-width: 2; -fx-padding: 15; -fx-min-width: 500;">
+
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 0;">
+                <ProgressIndicator prefWidth="25" prefHeight="25"
+                                   style="-fx-accent: #000080;"/>
+                <Text fx:id="runningMan" style="-fx-font-size: 20;"/>
+                <ProgressBar fx:id="loadingBar" prefHeight="20"
+                             style="-fx-accent: #000080;"
+                             HBox.hgrow="ALWAYS"
+                             maxWidth="Infinity"/>
+            </HBox>
+
+            <Text fx:id="loadingText" text="Loading..."
+                  style="-fx-font-size: 12; -fx-fill: #000080;"/>
+        </VBox>
+    </VBox>
+</StackPane>

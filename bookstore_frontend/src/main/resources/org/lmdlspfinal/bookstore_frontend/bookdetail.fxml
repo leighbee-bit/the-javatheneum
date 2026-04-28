@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.BookDetailController"
+           style="-fx-background-color: #b0c4e8;">
+
+    <VBox StackPane.alignment="TOP_CENTER" prefWidth="1000" prefHeight="700"
+          style="-fx-background-color: #b0c4e8;">
+
+        <!-- Title bar -->
+        <HBox alignment="CENTER_LEFT" spacing="6"
+              style="-fx-background-color: linear-gradient(to right, #000080, #1084d0);
+                     -fx-padding: 4 6;">
+            <ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
+                <image><Image url="@javathenum_logo.png"/></image>
+            </ImageView>
+            <Text fx:id="windowTitle" text="Book Details - Javatheneum"
+                  style="-fx-fill: white; -fx-font-size: 11; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="—" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+            <Button text="□" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+            <Button text="✕" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
+        </HBox>
+
+        <!-- Toolbar -->
+        <HBox alignment="CENTER_LEFT" spacing="8"
+              style="-fx-background-color: #d4d0c8;
+                     -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                     -fx-border-width: 0 0 2 0; -fx-padding: 5 10;">
+            <Button text="← Back" onAction="#handleBack"
+                    style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+            <Button text="🏠 Home" onAction="#handleHome"
+                    style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+            <Button text="❤ Wishlist" onAction="#handleWishlist"
+                    style="-fx-background-color: #f4a0c0; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="statusLabel" style="-fx-font-size: 11; -fx-text-fill: #000080;"/>
+        </HBox>
+
+        <!-- Main content -->
+        <ScrollPane fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS"
+                    style="-fx-background-color: #b0c4e8; -fx-border-color: transparent;">
+            <HBox spacing="20" style="-fx-padding: 20; -fx-background-color: #b0c4e8;">
+
+                <!-- Left panel: cover + buttons -->
+                <VBox spacing="10" alignment="TOP_CENTER" minWidth="220"
+                      style="-fx-background-color: #d4d0c8;
+                             -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                             -fx-border-width: 2; -fx-padding: 15;">
+                    <ImageView fx:id="bookCover" fitWidth="180" fitHeight="250" preserveRatio="true"/>
+
+                    <Button fx:id="wishlistBtn" text="+ Add to Wishlist"
+                            onAction="#handleAddToWishlist" prefWidth="180"
+                            style="-fx-background-color: #d4d0c8;
+                                   -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                                   -fx-border-width: 2; -fx-padding: 5 10;"/>
+
+                    <Button fx:id="previewBtn" text="📖 Preview Book"
+                            onAction="#handlePreview" prefWidth="180"
+                            style="-fx-background-color: #f4a0c0;
+                                   -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                                   -fx-border-width: 2; -fx-padding: 5 10;"/>
+                </VBox>
+
+                <!-- Right panel: book info -->
+                <VBox spacing="10" HBox.hgrow="ALWAYS"
+                      style="-fx-background-color: #d4d0c8;
+                             -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                             -fx-border-width: 2; -fx-padding: 15;">
+
+                    <Text fx:id="titleText"
+                          style="-fx-font-size: 20; -fx-font-weight: bold; -fx-fill: #000080;"/>
+
+                    <Separator/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Author:" style="-fx-font-weight: bold; -fx-font-size: 12;"/>
+                        <Text fx:id="authorText" style="-fx-font-size: 12; -fx-fill: #444;"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Price:" style="-fx-font-weight: bold; -fx-font-size: 12;"/>
+                        <Text fx:id="priceText" style="-fx-font-size: 13; -fx-fill: #800000; -fx-font-weight: bold;"/>
+                    </HBox>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Pages:" style="-fx-font-weight: bold; -fx-font-size: 12;"/>
+                        <Text fx:id="pageCountText" style="-fx-font-size: 12; -fx-fill: #444;"/>
+                    </HBox>
+
+                    <Separator/>
+
+                    <Label text="Description:" style="-fx-font-weight: bold; -fx-font-size: 12;"/>
+                    <TextArea fx:id="descriptionText" wrapText="true" editable="false"
+                              prefHeight="200" VBox.vgrow="ALWAYS"
+                              style="-fx-background-color: white;
+                                     -fx-border-color: #808080 #ffffff #ffffff #808080;
+                                     -fx-border-width: 2; -fx-font-size: 12;"/>
+                </VBox>
+            </HBox>
+        </ScrollPane>
+    </VBox>
+
+    <!-- Taskbar -->
+    <HBox alignment="CENTER_LEFT" spacing="5"
+          style="-fx-background-color: #d4d0c8;
+                 -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                 -fx-border-width: 2 0 0 0; -fx-padding: 3 5;"
+          StackPane.alignment="BOTTOM_LEFT"
+          maxHeight="30">
+        <Button text="🪟 Start"
+                style="-fx-background-color: #d4d0c8;
+                       -fx-border-color: #ffffff #808080 #808080 #ffffff;
+                       -fx-border-width: 2; -fx-font-size: 11; -fx-font-weight: bold; -fx-padding: 2 8;"/>
+        <Separator orientation="VERTICAL"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="clockLabel" style="-fx-font-size: 10;"/>
+    </HBox>
+
+</StackPane>

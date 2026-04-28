@@ -10,6 +10,22 @@ public class Book {
     private BigDecimal price;
     private String imageUrl;
 
+    private Integer pageCount;
+    private String previewLink;
+
+    private String genre;
+    private Integer wishlistCount;
+
+    public String getGenre() { return genre; }
+    public void setGenre(String genre) { this.genre = genre; }
+    public Integer getWishlistCount() { return wishlistCount; }
+    public void setWishlistCount(Integer wishlistCount) { this.wishlistCount = wishlistCount; }
+
+    public Integer getPageCount() { return pageCount; }
+    public void setPageCount(Integer pageCount) { this.pageCount = pageCount; }
+    public String getPreviewLink() { return previewLink; }
+    public void setPreviewLink(String previewLink) { this.previewLink = previewLink; }
+
     public Long getBookid() { return bookid; }
     public void setBookid(Long bookid) { this.bookid = bookid; }
     public String getTitle() { return title; }

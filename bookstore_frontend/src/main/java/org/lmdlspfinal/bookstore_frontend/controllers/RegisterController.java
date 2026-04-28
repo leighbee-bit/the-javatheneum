@@ -16,6 +16,29 @@ public class RegisterController {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
+    @FXML private Label clockLabel;
+
+    @FXML
+    public void initialize() {
+        startClock();
+    }
+
+    private void startClock() {
+        javafx.animation.Timeline clock = new javafx.animation.Timeline(
+                new javafx.animation.KeyFrame(javafx.util.Duration.ZERO, e -> updateClock()),
+                new javafx.animation.KeyFrame(javafx.util.Duration.seconds(1))
+        );
+        clock.setCycleCount(javafx.animation.Animation.INDEFINITE);
+        clock.play();
+    }
+
+    private void updateClock() {
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        java.time.format.DateTimeFormatter formatter =
+                java.time.format.DateTimeFormatter.ofPattern("M/d/yyyy h:mm a");
+        clockLabel.setText(now.format(formatter));
+    }
+
     @FXML
     private void handleRegister() {
         String username = usernameField.getText().trim();
