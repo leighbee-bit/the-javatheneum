@@ -10,6 +10,7 @@ import org.lmdlspfinal.bookstore_frontend.controllers.GenreController;
 import org.lmdlspfinal.bookstore_frontend.controllers.HomeController;
 import org.lmdlspfinal.bookstore_frontend.controllers.LoadingController;
 import org.lmdlspfinal.bookstore_frontend.models.Book;
+import org.lmdlspfinal.bookstore_frontend.controllers.OrdersController;
 
 public class BookstoreApplication extends Application {
 
@@ -84,13 +85,25 @@ public class BookstoreApplication extends Application {
         primaryStage.setScene(scene);
     }
 
+    public static void showOrders() throws Exception {
+        navigationHistory.push("orders");
+        FXMLLoader loader = new FXMLLoader(BookstoreApplication.class.getResource("orders.fxml"));
+        Scene scene = new Scene(loader.load(), 1000, 700);
+        primaryStage.setScene(scene);
+    }
+
     public static void goBack() throws Exception {
+        System.out.println("Navigation history: " + navigationHistory);
+        System.out.println("Stack size: " + navigationHistory.size());
+
         if (navigationHistory.isEmpty()) {
             showHome();
             return;
         }
 
         String last = navigationHistory.pop();
+        System.out.println("Popped: " + last);
+        System.out.println("Remaining: " + navigationHistory);
 
         if (last.equals("wishlist")) {
             // Don't push to history again when going back
@@ -142,7 +155,39 @@ public class BookstoreApplication extends Application {
             primaryStage.setScene(scene);
         }  else if (last.equals("home")) {
         showHome();
-    }
+        } else if (last.equals("orders")) {
+            if (!navigationHistory.isEmpty()) {
+                String previous = navigationHistory.peek();
+                if (previous.equals("wishlist")) {
+                    navigationHistory.pop();
+                    FXMLLoader loader = new FXMLLoader(BookstoreApplication.class.getResource("wishlist.fxml"));
+                    Scene scene = new Scene(loader.load(), 1000, 700);
+                    primaryStage.setScene(scene);
+                } else if (previous.equals("bookdetail")) {
+                    navigationHistory.pop();
+                    if (lastBook != null) {
+                        FXMLLoader loader = new FXMLLoader(BookstoreApplication.class.getResource("bookdetail.fxml"));
+                        Scene scene = new Scene(loader.load(), 1000, 700);
+                        BookDetailController controller = loader.getController();
+                        controller.setBook(lastBook);
+                        primaryStage.setScene(scene);
+                    } else {
+                        showHome();
+                    }
+                } else if (previous.startsWith("genre:")) {
+                    String genre = navigationHistory.pop().replace("genre:", "");
+                    FXMLLoader loader = new FXMLLoader(BookstoreApplication.class.getResource("genreview.fxml"));
+                    Scene scene = new Scene(loader.load(), 1000, 700);
+                    GenreController controller = loader.getController();
+                    controller.setGenre(genre);
+                    primaryStage.setScene(scene);
+                } else {
+                    showHome();
+                }
+            } else {
+                showHome();
+            }
+        }
     }
 
     public static void showBookDetail(Book book) throws Exception {
@@ -168,7 +213,7 @@ public class BookstoreApplication extends Application {
     public static Long loggedInUserId;
     public static Long currentWishlistId;
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         launch();
     }
 }

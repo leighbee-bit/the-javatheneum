@@ -79,6 +79,16 @@ public class WishlistController implements Initializable {
         }
     }
 
+    @FXML
+    private void handleOrders() {
+        try {
+            BookstoreApplication.navigationHistory.push("bookdetail");
+            BookstoreApplication.showOrders();
+        } catch (Exception e) {
+            statusLabel.setText("Error: " + e.getMessage());
+        }
+    }
+
     private HBox createWishlistCard(JsonNode book, Long wishlistItemId) {
         HBox card = new HBox(15);
         card.setPadding(new Insets(12));

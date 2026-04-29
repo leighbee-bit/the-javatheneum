@@ -6,36 +6,29 @@
 <?import javafx.scene.image.Image?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.WishlistController"
+            fx:controller="org.lmdlspfinal.bookstore_frontend.controllers.OrdersController"
             style="-fx-background-color: #b0c4e8;"
             prefWidth="1000" prefHeight="700">
 
-    <!-- TOP -->
     <top>
         <VBox style="-fx-background-color: #d4d0c8;">
-
-            <!-- Title bar -->
             <HBox alignment="CENTER_LEFT" spacing="6"
                   style="-fx-background-color: linear-gradient(to right, #000080, #1084d0); -fx-padding: 4 6;">
                 <ImageView fitWidth="16" fitHeight="16" preserveRatio="true">
                     <image><Image url="@javathenum_logo.png"/></image>
                 </ImageView>
-                <Text text="My Wishlist - Javatheneum"
+                <Text text="My Orders - Javatheneum"
                       style="-fx-fill: white; -fx-font-size: 11; -fx-font-weight: bold;"/>
                 <Region HBox.hgrow="ALWAYS"/>
                 <Button text="—" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
                 <Button text="□" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
                 <Button text="✕" style="-fx-font-size: 9; -fx-padding: 0 4; -fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 1;"/>
             </HBox>
-
-            <!-- Toolbar -->
             <HBox alignment="CENTER_LEFT" spacing="8"
                   style="-fx-background-color: #d4d0c8;
                          -fx-border-color: #ffffff #808080 #808080 #ffffff;
                          -fx-border-width: 0 0 2 0; -fx-padding: 5 10;">
                 <Button text="🏠 Home" onAction="#handleHome"
-                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
-                <Button text="🛒 Orders" onAction="#handleOrders"
                         style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
                 <Button text="← Back" onAction="#handleBack"
                         style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
@@ -45,16 +38,14 @@
         </VBox>
     </top>
 
-    <!-- CENTER -->
     <center>
         <ScrollPane fitToWidth="true" fitToHeight="true"
                     style="-fx-background-color: #b0c4e8; -fx-border-color: transparent;">
-            <VBox fx:id="wishlistContainer" spacing="10"
+            <VBox fx:id="ordersContainer" spacing="10"
                   style="-fx-padding: 20; -fx-background-color: #b0c4e8;"/>
         </ScrollPane>
     </center>
 
-    <!-- BOTTOM taskbar -->
     <bottom>
         <HBox alignment="CENTER_LEFT" spacing="5"
               style="-fx-background-color: #d4d0c8;
@@ -69,5 +60,4 @@
             <Label fx:id="clockLabel" style="-fx-font-size: 10;"/>
         </HBox>
     </bottom>
-
 </BorderPane>

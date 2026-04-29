@@ -223,6 +223,15 @@ public class HomeController implements Initializable {
         imageView.setStyle("-fx-background-color: #d4d0c8;");
     }
 
+    @FXML
+    private void handleOrders() {
+        try {
+            BookstoreApplication.showOrders();
+        } catch (Exception e) {
+            statusLabel.setText("Error: " + e.getMessage());
+        }
+    }
+
     private boolean isInWishlist(Long bookId) {
         try {
             if (currentWishlistId == null) return false;

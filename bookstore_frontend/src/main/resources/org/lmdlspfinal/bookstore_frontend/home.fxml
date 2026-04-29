@@ -39,6 +39,8 @@
                         style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
                 <Button text="❤ Wishlist" onAction="#handleWishlist"
                         style="-fx-background-color: #f4a0c0; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
+                <Button text="🛒 Orders" onAction="#handleOrders"
+                        style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
                 <Button text="Logout" onAction="#handleLogout"
                         style="-fx-background-color: #d4d0c8; -fx-border-color: #ffffff #808080 #808080 #ffffff; -fx-border-width: 2; -fx-padding: 3 12;"/>
             </HBox>

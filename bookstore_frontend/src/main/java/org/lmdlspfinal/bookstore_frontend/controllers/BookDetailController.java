@@ -26,6 +26,8 @@ public class BookDetailController {
     @FXML private Button previewBtn;
     @FXML private Label statusLabel;
     @FXML private Label clockLabel;
+    @FXML private Button buyBtn;
+    @FXML private Text windowTitle;
 
     private Book currentBook;
 
@@ -74,6 +76,16 @@ public class BookDetailController {
         }
 
         updateWishlistButton();
+    }
+
+    @FXML
+    private void handleOrders() {
+        try {
+            BookstoreApplication.navigationHistory.push("bookdetail");
+            BookstoreApplication.showOrders();
+        } catch (Exception e) {
+            statusLabel.setText("Error: " + e.getMessage());
+        }
     }
 
     private void updateWishlistButton() {
@@ -160,9 +172,42 @@ public class BookDetailController {
     @FXML
     private void handleBack() {
         try {
-            BookstoreApplication.showHome();
+            BookstoreApplication.goBack();
         } catch (Exception e) {
             statusLabel.setText("Error: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleBuyNow() {
+        try {
+            // Create order
+            String orderJson = String.format(
+                    "{\"user\":{\"userid\":%d},\"totalPrice\":%s,\"status\":\"completed\"}",
+                    BookstoreApplication.loggedInUserId,
+                    currentBook.getPrice().toString()
+            );
+            String orderResponse = ApiService.post("/api/orders", orderJson);
+
+            com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            com.fasterxml.jackson.databind.JsonNode orderNode = mapper.readTree(orderResponse);
+            Long orderId = orderNode.get("orderid").asLong();
+
+            // Add order item
+            String itemJson = String.format(
+                    "{\"order\":{\"orderid\":%d},\"book\":{\"bookid\":%d},\"quantity\":1,\"price\":%s}",
+                    orderId, currentBook.getBookid(), currentBook.getPrice().toString()
+            );
+            ApiService.post("/api/order-items", itemJson);
+
+            statusLabel.setText("✓ Order placed successfully!");
+            buyBtn.setText("✓ Purchased");
+            buyBtn.setStyle("-fx-background-color: #006600; -fx-text-fill: white; " +
+                    "-fx-border-color: #ffffff #808080 #808080 #ffffff; " +
+                    "-fx-border-width: 2; -fx-padding: 5 10;");
+            buyBtn.setDisable(true);
+        } catch (Exception e) {
+            statusLabel.setText("Order failed: " + e.getMessage());
         }
     }
 
