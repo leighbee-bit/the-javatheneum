@@ -7,10 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.lmdlspfinal.bookstore_frontend.controllers.BookDetailController;
 import org.lmdlspfinal.bookstore_frontend.controllers.GenreController;
-import org.lmdlspfinal.bookstore_frontend.controllers.HomeController;
 import org.lmdlspfinal.bookstore_frontend.controllers.LoadingController;
 import org.lmdlspfinal.bookstore_frontend.models.Book;
-import org.lmdlspfinal.bookstore_frontend.controllers.OrdersController;
 
 public class BookstoreApplication extends Application {
 
