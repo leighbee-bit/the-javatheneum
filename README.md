@@ -162,4 +162,3 @@ The frontend expects the backend at `http://localhost:8080`. If your backend run
 ## Credits
 
 - Book data from the [Google Books API](https://developers.google.com/books)
-- Pixel-art logo: original artwork
