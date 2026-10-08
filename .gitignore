@@ -1,0 +1,9 @@
+# Course materials (kept locally, not published)
+supporting_documents/
+
+# IDE settings
+.idea/
+*.iml
+
+# macOS
+.DS_Store
